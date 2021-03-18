@@ -211,6 +211,7 @@ getch();
 }
 }
 
+
 //hotel management shows all persons that have booked room
 void HotelMgnt::searchCustomer(char *pname)
 {
