@@ -5,7 +5,7 @@
 #define max 100
 using namespace std;
 
-//Class Customer
+
 class Customer
 {
 public:
