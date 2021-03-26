@@ -1,6 +1,8 @@
 #include<iostream>
 #include<string.h>
 #include<conio.h>
+#include<fstream>
+#include<stdio.h>
 
 #define max 100
 using namespace std;
@@ -45,17 +47,21 @@ Room Room::addRoom(int rno)
 {
 class Room room;
 room.roomNumber=rno;
-cout<<"\n\t\t\t\t\tType AC/Non-AC (A/N) : ";
+cout<<"\nType AC/Non-AC (A/N) : ";
 cin>>room.ac;
-cout<<"\n\t\t\t\t\tType Comfort (S/N) : ";
+cout<<"\nType Comfort (S/N) : ";
 cin>>room.type;
-cout<<"\n\t\t\t\t\tType Size (B/S) : ";
+cout<<"\nType Size (B/S) : ";
 cin>>room.stype;
-cout<<"\n\t\t\t\t\tDaily Rent : ";
+cout<<"\nDaily Rent : ";
+
 cin>>room.rent;
 room.status=0;
-
-cout<<"\n\t\t\t\t\t Room Added Successfully!";
+std::cout<<"\n";
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|  Room Added Successfully  |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+cout<<"\nPress any key to go back..";
 getch();
 return room;
 }
@@ -74,32 +80,56 @@ break;
 }
 if(found==1)
 {
-cout<<"\t\t\t\t\tRoom Details\n";
+//cout<<"\t\t\t\t\tRoom Details\n";
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|      Room Details         |"<<endl;
+//std::cout<<"-----------------------------"<<endl;
+//cout<<"\nPress any key to go back..";
 if(rooms[i].status==1)
 {
-cout<<"\n\t\t\t\t\tRoom is Reserved";
+//cout<<"\n\t\t\t\t\tRoom is Reserved";
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|     Room is Reserved      |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+cout<<"\nPress any key to go back..";
 }
 else
 {
-cout<<"\n\t\t\t\t\tRoom is available";
-}
 displayRoom(rooms[i]);
+//cout<<"\n\t\t\t\t\tRoom is available";
+//std::cout<<"-----------------------------"<<endl;
+std::cout<<"|    Room is available      |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+cout<<"\nPress any key to go back..";
 getch();
 }
+
+}
 else
 {
-cout<<"\n\t\t\t\t\tRoom not found";
+//cout<<"\n\t\t\t\t\tRoom not found";
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|      Room not found       |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+cout<<"\nPress any key to go back..";
 getch();
 }
 }
 
 void Room::displayRoom(Room tempRoom)
 {
-cout<<"\n\t\t\t\t\tRoom Number: \t"<<tempRoom.roomNumber;
-cout<<"\n\t\t\t\t\tType AC/Non-AC (A/N) "<<tempRoom.ac;
-cout<<"\n\t\t\t\t\tType Comfort (S/N) "<<tempRoom.type;
-cout<<"\n\t\t\t\t\tType Size (B/S) "<<tempRoom.stype;
-cout<<"\n\t\t\t\t\tRent: "<<tempRoom.rent;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"  Room Number : "<<tempRoom.roomNumber<<endl;
+std::cout<<"  Type AC/Non-AC (A/N) : "<<tempRoom.ac<<endl;
+std::cout<<"  Type Comfort (S/N) : "<<tempRoom.type<<endl;
+std::cout<<"  Type Size (B/S) : "<<tempRoom.stype<<endl;
+std::cout<<"  Rent : "<<tempRoom.rent<<endl;
+std::cout<<"-----------------------------"<<endl;
+//cout<<"Room Number: \t"<<tempRoom.roomNumber;
+//cout<<"Type AC/Non-AC (A/N) "<<tempRoom.ac;
+//cout<<"Type Comfort (S/N) "<<tempRoom.type;
+//cout<<"Type Size (B/S) "<<tempRoom.stype;
+//cout<<"Rent: "<<tempRoom.rent;
 }
 
 //hotel management class
@@ -117,19 +147,25 @@ void guestSummaryReport();
 void HotelMgnt::guestSummaryReport(){
 
 if(count==0){
-	cout<<"\n\t\t\t\t\t No Guest in Hotel !!";
-}	
+        system("cls");
+	//cout<<"\n\t\t\t\t\t No Guest in Hotel !!";
+	cout<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|   No Guest in Hotel !!    |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+}
 for(int i=0;i<count;i++)
 {
 if(rooms[i].status==1)
 {
-cout<<"\n\t\t\t\t\t Customer First Name : "<<rooms[i].cust.name;
-cout<<"\n\t\t\t\t\t Room Number : "<<rooms[i].roomNumber;
-cout<<"\n\t\t\t\t\t Address (only city) : "<<rooms[i].cust.address;
-cout<<"\n\t\t\t\t\t Phone : "<<rooms[i].cust.phone;
-cout<<"\n\t\t\t\t\t---------------------------------------";	
+cout<<" Customer First Name : "<<rooms[i].cust.name<<endl;
+cout<<" Room Number : "<<rooms[i].roomNumber<<endl;
+cout<<" Address (only city) : "<<rooms[i].cust.address<<endl;
+cout<<" Phone : "<<rooms[i].cust.phone<<endl;
+cout<<"---------------------------------------";
 }
-	
+
 }
 
 getch();
@@ -141,7 +177,10 @@ void HotelMgnt::checkIn()
 int i,found=0,rno;
 
 class Room room;
-cout<<"\n\t\t\t\t\tEnter Room number : ";
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|         Check-IN          |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+cout<<"Enter Room number : ";
 cin>>rno;
 for(i=0;i<count;i++)
 {
@@ -155,36 +194,45 @@ if(found==1)
 {
 if(rooms[i].status==1)
 {
-cout<<"\n\t\t\t\t\tRoom is already Booked";
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|  Room is already Booked   |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+//cout<<"Room is already Booked";
 getch();
 return;
 }
 
-cout<<"\nEnter booking id: ";
+cout<<"\n Enter booking id : ";
 cin>>rooms[i].cust.booking_id;
 
-cout<<"\n\t\t\t\t\tEnter Customer Name (First Name): ";
+cout<<"\n Enter Customer Name (First Name) : ";
 cin>>rooms[i].cust.name;
 
-cout<<"\n\t\t\t\t\tEnter Address (only city): ";
+cout<<"\n Enter Address (only city) : ";
 cin>>rooms[i].cust.address;
 
-cout<<"\n\t\t\t\t\tEnter Phone: ";
+cout<<"\n Enter Phone : ";
 cin>>rooms[i].cust.phone;
 
-cout<<"\n\t\t\t\t\tEnter From Date: ";
+cout<<"\n Enter From Date : ";
 cin>>rooms[i].cust.from_date;
 
-cout<<"\nEnter to  Date: ";
+cout<<"\n Enter to  Date : ";
 cin>>rooms[i].cust.to_date;
 
 
-cout<<"\n\t\t\t\t\tEnter Advance Payment: ";
+cout<<"\n Enter Advance Payment : ";
 cin>>rooms[i].cust.payment_advance;
 
 rooms[i].status=1;
 
-cout<<"\n\t\t\t\t\t Customer Checked-in Successfully..";
+//cout<<"\n Customer Checked-in Successfully..";
+cout<<"\n";
+std::cout<<"------------------------------------"<<endl;
+std::cout<<"| Customer Checked-in Successfully |"<<endl;
+std::cout<<"------------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
 getch();
 }
 }
@@ -199,15 +247,15 @@ for(i=0;i<count;i++)
 if(rooms[i].status==0)
 {
 displayRoom(rooms[i]);
-cout<<"\n\n\t\t\t\t\tPress enter for next room";
+//cout<<"Press enter for next room";
 found=1;
 getch();
 }
 }
 if(found==0)
 {
-cout<<"\n\t\t\t\t\tAll rooms are reserved";
-getch();
+//cout<<"\nAll rooms are reserved";
+//getch();
 }
 }
 
@@ -220,17 +268,30 @@ for(i=0;i<count;i++)
 {
 if(rooms[i].status==1 && stricmp(rooms[i].cust.name,pname)==0)
 {
-cout<<"\n\t\t\t\t\tCustomer Name: "<<rooms[i].cust.name;
-cout<<"\n\t\t\t\t\tRoom Number: "<<rooms[i].roomNumber;
+    system("cls");
+std::cout<<endl;
+std::cout<<"---------------------------------"<<endl;
+std::cout<<"| Customer Name: "<<rooms[i].cust.name<<endl;
+std::cout<<"| Room Number: "<<rooms[i].roomNumber<<endl;
+std::cout<<"---------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+//cout<<"Customer Name: "<<rooms[i].cust.name;
+//cout<<"Room Number: "<<rooms[i].roomNumber;
 
-cout<<"\n\n\t\t\t\t\tPress enter for next record";
+//cout<<"Press enter for next record";
 found=1;
 getch();
 }
 }
 if(found==0)
 {
-cout<<"\n\t\t\t\t\tPerson not found.";
+system("cls");
+std::cout<<endl;
+std::cout<<"---------------------------------"<<endl;
+std::cout<<"|        Person not found       |"<<endl;
+std::cout<<"---------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+//cout<<"\n\t\t\t\t\tPerson not found.";
 getch();
 }
 }
@@ -253,18 +314,22 @@ break;
 }
 if(found==1)
 {
-cout<<"\n\t\t\t\t\tEnter Number of Days:\t";
+cout<<endl;
+cout<<" Enter Number of Days : ";
 cin>>days;
 billAmount=days * rooms[i].rent;
-
-cout<<"\n\t\t\t\t\t\t######## CheckOut Details ########\n";
-cout<<"\n\t\t\t\t\tCustomer Name : "<<rooms[i].cust.name;
-cout<<"\n\t\t\t\t\tRoom Number : "<<rooms[i].roomNumber;
-cout<<"\n\t\t\t\t\tAddress : "<<rooms[i].cust.address;
-cout<<"\n\t\t\t\t\tPhone : "<<rooms[i].cust.phone;
-cout<<"\n\t\t\t\t\tTotal Amount Due : "<<billAmount<<" /";
-cout<<"\n\t\t\t\t\tAdvance Paid: "<<rooms[i].cust.payment_advance<<" /";
-cout<<"\n\t\t\t\t\t*** Total Payable: "<<billAmount-rooms[i].cust.payment_advance<<"/ only";
+cout<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|     CheckOut Details      |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+//cout<<" CheckOut Details \n";
+cout<<" Customer Name : "<<rooms[i].cust.name<<endl;
+cout<<" Room Number : "<<rooms[i].roomNumber<<endl;
+cout<<" Address : "<<rooms[i].cust.address<<endl;
+cout<<" Phone : "<<rooms[i].cust.phone<<endl;
+cout<<" Total Amount Due : "<<billAmount<<endl;
+cout<<" Advance Paid: "<<rooms[i].cust.payment_advance<<endl;
+cout<<" Total Payable: "<<billAmount-rooms[i].cust.payment_advance<<"/ only"<<endl;
 
 rooms[i].status=0;
 }
@@ -281,19 +346,36 @@ char ch;
 do
 {
 system("cls");
-cout<<"\n\t\t\t\t\t### Manage Rooms ###";
-cout<<"\n\t\t\t\t\t1. Add Room";
-cout<<"\n\t\t\t\t\t2. Search Room";
-cout<<"\n\t\t\t\t\t3. Back to Main Menu";
-cout<<"\n\n\t\t\t\t\tEnter Option: ";
+cout<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|     Hotel Management      |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|       1. Add Room         |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|     2. Search Room        |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|   3. Back to Main Menu    |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"Choose option : ";
 cin>>opt;
+//cout<<"\n\t\t\t\t\t### Manage Rooms ###";
+//cout<<"\n\t\t\t\t\t1. Add Room";
+//cout<<"\n\t\t\t\t\t2. Search Room";
+//cout<<"\n\t\t\t\t\t3. Back to Main Menu";
+//cout<<"\n\n\t\t\t\t\tEnter Option: ";
+//cin>>opt;
 
 
 //switch statement
 switch(opt)
 {
 case 1:
-cout<<"\n\t\t\t\t\tEnter Room Number: ";
+    system("cls");
+    cout<<"\n\tRoom Details"<<endl;
+cout<<"\nEnter Room Number : ";
 cin>>rno;
 i=0;
 for(i=0;i<count;i++)
@@ -305,7 +387,11 @@ flag=1;
 }
 if(flag==1)
 {
-cout<<"\n\t\t\t\t\tRoom Number is Present.\n\t\t\t\t\tPlease enter unique Number";
+//cout<<"\nRoom Number is Present.";
+//std::cout<<"-----------------------------"<<endl;
+std::cout<<"|  Room Number is Present   |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+cout<<"\nPress any key to go back..";
 flag=0;
 getch();
 }
@@ -316,7 +402,8 @@ count++;
 }
 break;
 case 2:
-cout<<"\n\t\t\t\t\tEnter room number: ";
+    system("cls");
+cout<<"\n Enter room number : ";
 cin>>rno;
 room.searchRoom(rno);
 break;
@@ -324,7 +411,15 @@ case 3:
 //nothing to do
 break;
 default:
-cout<<"\n\t\t\t\t\tPlease Enter correct option";
+    system("cls");
+system("COLOR 4F");
+std::cout<<endl;
+std::cout<<"-----------------------------------------"<<endl;
+std::cout<<"|  Please, Enter option between 1 to 3  |"<<endl;
+std::cout<<"-----------------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+getch();
+//cout<<"\n Please Enter correct option";
 break;
 }
 }while(opt!=3);
@@ -332,25 +427,46 @@ break;
 using namespace std;
 int main()
 {
+
+   system("COLOR 3F");
+   system("mode 0,100");
 class HotelMgnt hm;
 int i,j,opt,rno;
 char ch;
 char pname[100];
-
+//textbackground(BLACK);
+//textcolor(WHITE);
 system("cls");
 
 do
 {
 system("cls");
-cout<<"\t\t\t\t\t######## Hotel Management #########\n";
-cout<<"\n\t\t\t\t\t1. Manage Rooms";
-cout<<"\n\t\t\t\t\t2. Check-In Room";
-cout<<"\n\t\t\t\t\t3. Available Rooms";
-cout<<"\n\t\t\t\t\t4. Search Customer";
-cout<<"\n\t\t\t\t\t5. Check-Out Room";
-cout<<"\n\t\t\t\t\t6. Guest Summary Report";
-cout<<"\n\t\t\t\t\t7. Exit";
-cout<<"\n\n\t\t\t\t\tEnter Option: ";
+system("COLOR 3F");
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|     Hotel Management      |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|     1. Manage Rooms       |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|     2. Check-In Room      |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|    3. Available Room      |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|     4. Search Customer    |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|     5. Check-Out Room     |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|   6. Guest Summary Report |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|          7. Exit          |"<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"Choose option : ";
 cin>>opt;
 switch(opt)
 {
@@ -360,30 +476,60 @@ break;
 case 2:
 if(count==0)
 {
-cout<<"\n\t\t\t\t\tRooms data is not available.\n\t\t\t\t\tPlease add the rooms first.";
+system("cls");
+std::cout<<endl;
+std::cout<<"---------------------------------"<<endl;
+std::cout<<"|  Rooms data is not available  |"<<endl;
+std::cout<<"|  Please add the rooms first   |"<<endl;
+std::cout<<"---------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+//cout<<"Rooms data is not available Please add the rooms first.";
 getch();
 }
 else
+    system("cls");
 hm.checkIn();
 break;
 case 3:
 if(count==0)
 {
-cout<<"\n\t\t\t\t\tRooms data is not available.\n\t\t\t\t\tPlease add the rooms first.";
+system("cls");
+std::cout<<endl;
+std::cout<<"---------------------------------"<<endl;
+std::cout<<"|  Rooms data is not available  |"<<endl;
+std::cout<<"|  Please add the rooms first   |"<<endl;
+std::cout<<"---------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+//cout<<"\n\t\t\t\t\tRooms data is not available.\n\t\t\t\t\tPlease add the rooms first.";
 getch();
 }
-else
+else{
+system("cls");
+std::cout<<endl;
+std::cout<<"-----------------------------"<<endl;
+std::cout<<"|      Room Details         |"<<endl;
 hm.getAvailRoom();
+cout<<"\nPress any key to go back..";
+getch();}
 break;
 case 4:
 if(count==0)
 {
-cout<<"\n\t\t\t\t\tRooms are not available.\n\t\t\t\t\tPlease add the rooms first.";
+system("cls");
+std::cout<<endl;
+std::cout<<"---------------------------------"<<endl;
+std::cout<<"|  Rooms data is not available  |"<<endl;
+std::cout<<"|  Please add the rooms first   |"<<endl;
+std::cout<<"---------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+//cout<<"\n\t\t\t\t\tRooms are not available.\n\t\t\t\t\tPlease add the rooms first.";
 getch();
 }
 else
 {
-cout<<"\t\t\t\t\tEnter Customer Name: ";
+system("cls");
+std::cout<<endl;
+cout<<" Enter Customer Name : ";
 cin>>pname;
 hm.searchCustomer(pname);
 }
@@ -391,27 +537,57 @@ break;
 case 5:
 if(count==0)
 {
-cout<<"\n\t\t\t\t\tRooms are not available.\n\t\t\t\t\tPlease add the rooms first.";
+system("cls");
+std::cout<<endl;
+std::cout<<"---------------------------------"<<endl;
+std::cout<<"|  Rooms data is not available  |"<<endl;
+std::cout<<"|  Please add the rooms first   |"<<endl;
+std::cout<<"---------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+//cout<<"\n\t\t\t\t\tRooms are not available.\n\t\t\t\t\tPlease add the rooms first.";
 getch();
 }
 else
 {
-cout<<"\t\t\t\t\tEnter Room Number : ";
+       system("cls");
+std::cout<<endl;
+cout<<" Enter Room Number : ";
 cin>>rno;
 hm.checkOut(rno);
+std::cout<<"---------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
 }
 break;
 case 6:
-hm.guestSummaryReport();	
+    system("cls");
+std::cout<<endl;
+std::cout<<"---------------------------------"<<endl;
+std::cout<<"|      Guest Summary Report     |"<<endl;
+std::cout<<"---------------------------------"<<endl;
+hm.guestSummaryReport();
+std::cout<<"---------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
 break;
 case 7:
-cout<<"\n\t\t\t\t\tTHANK YOU! FOR USING SOFTWARE";
+system("cls");
+std::cout<<endl;
+std::cout<<"-----------------------------------"<<endl;
+std::cout<<"|  THANK YOU! FOR USING SOFTWARE  |"<<endl;
+std::cout<<"-----------------------------------"<<endl;
+//cout<<"\nPress any key to go back..";
+//cout<<"\n\t\t\t\t\tTHANK YOU! FOR USING SOFTWARE";
 break;
 default:
-cout<<"\n\t\t\t\t\tPlease Enter correct option";
+system("cls");
+system("COLOR 4F");
+std::cout<<endl;
+std::cout<<"-----------------------------------------"<<endl;
+std::cout<<"|  Please, Enter option between 1 to 7  |"<<endl;
+std::cout<<"-----------------------------------------"<<endl;
+cout<<"\nPress any key to go back..";
+getch();
 break;
 }
 }while(opt!=7);
-
 getch();
 }
